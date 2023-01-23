@@ -9,7 +9,15 @@ function convertToRoman(num) {
       6:['I', 1]
     };
 
-  //your code here
+ let romanNumeral = "";
+    let remaining = num;
+    while (remaining > 0) {
+        // Find the highest symbol that is less than or equal to the remaining number
+        const maxSymbol = Object.keys(symbols).reduce((a, b) => (b <= remaining ? b : a));
+        romanNumeral += symbols[maxSymbol];
+        remaining -= maxSymbol;
+    }
+    return romanNumeral;
 
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
